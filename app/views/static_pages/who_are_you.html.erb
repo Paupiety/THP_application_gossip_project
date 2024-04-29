@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Who are you ?</title>
+</head>
+<body>
+  <main>
+  <section class=section_center>
+    <div>
+  <h1> The Gossip project  </h1>
+  <p class=center> Pour rentrer dans notre monde nous avons besoin de savoir qui tu es.</p>
+    <%= form_with(url: "/accueil", method: "get", class:"form-row") do |form|%>
+        <%= form.text_field :first_name, placeholder: "Quel est ton prénom ?", class:"form-control" %><br>
+        <%= form.submit 'Envoyer', class:'btn'%>
+    <%end%>
+    </div>
+  </section>
+  </main>
+</body>
+</html>
+
