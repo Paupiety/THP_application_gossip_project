@@ -7,4 +7,5 @@ class CreateGossips < ActiveRecord::Migration[7.1]
       t.timestamps
     end
   end
+
 end

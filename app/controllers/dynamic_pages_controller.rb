@@ -4,7 +4,7 @@ class DynamicPagesController < ApplicationController
         @gossips = Gossip.find(id)
     end
 
-    def user()
+    def author()
         id = params[:id]
         @gossips = Gossip.find(id)
     end

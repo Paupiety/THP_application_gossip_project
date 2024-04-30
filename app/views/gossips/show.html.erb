@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Potin</title>
+  </head>
+  <body>
+    <section class="section_potin">
+      <div class="align_center">
+        <% if @gossip %>
+          <h1>Potin n°<%= @gossip.id %> </h1>
+          <h2>Créé par <%=@gossip.user ? @gossip.user.first_name : "Anonyme" %></h2>
+          <h3><%=@gossip.title %></h3>
+          <p class="p_petit">
+          <%= @gossip.description %>
+          </p>
+        <% else %>
+          <p>Le potin que vous recherchez n'existe pas.</p>
+        <% end %>
+        <div class="align_row">
+          <a class="btn" href="/accueil">Revenir à la page d'accueil</a><br>
+            <%# <a href="/gossips/<%=@gossips.id%>
+            <%#/edit">
+              <%# Mettre à jour %>
+            <%# </a> %>
+          <%if @gossip.user%>
+            <a class="btn" href="/gossips/<%=@gossip.id %>/users/<%=@gossip.user_id%>">Voir le profil de l'auteur</a>
+          <%end%>
+        </div>
+      <div>
+    </section>
+  </body>
+</html>

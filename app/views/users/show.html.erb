@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Potin</title>
+  </head>
+  <body>
+    <section class="section_potin">
+      <div class="align_center">
+        <h1>Page profil de <%= @user.first_name%></h1>
+        <p class="p.petit">
+          Nom : <%= @user.last_name %><br>
+          Email : <%= @user.email %><br>
+          Age : <%= @user.age %><br>
+          Description : <%= @user.description %><br>
+          Ville : <%= @user.city.name %><br>
+        </p>
+        <a class="btn" href="/accueil">Revenir à la page d'accueil</a>
+      </div>
+    </section>
+  </body>
+</html>

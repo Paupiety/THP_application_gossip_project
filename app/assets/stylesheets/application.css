@@ -77,6 +77,10 @@ section{
     font-style: italic;
 }
 
+.margin_title{
+    margin-bottom: 1rem;
+}
+
 .section_center{
     text-align: center;
     justify-content: center;
@@ -149,6 +153,15 @@ h2 {
     color: black;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+}
+
+.alert {
+    font-size: 11px;
+    width: 100%;
+    border-radius: 0;
+    padding: 2px;
+    margin: 0px;
+    text-align: center;
 }
 
 h3 {
