@@ -1,31 +1,69 @@
 <html>
   <head>
     <title>Potin</title>
+    
   </head>
   <body>
+    <%= render 'shared/header' %>
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:success]%>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:error]%>
+      </div>
+    <%end%>
+
     <section class="section_potin">
       <div class="align_center">
         <% if @gossip %>
-          <h1>Potin n°<%= @gossip.id %> </h1>
+          <a href="/accueil"><i class="bi bi-arrow-left-circle-fill color"></i></a>
+          <h1>Potin n°<%= @gossip.id %></h1>
           <h2>Créé par <%=@gossip.user ? @gossip.user.first_name : "Anonyme" %></h2>
           <h3><%=@gossip.title %></h3>
           <p class="p_petit">
-          <%= @gossip.description %>
+            <%= @gossip.description %><br>
+          </p>
+          <p class="p_petit tag">
+            <%@gossip.tags.each do |tag|%>
+                #<%=tag.name%>    
+            <%end%>
           </p>
         <% else %>
           <p>Le potin que vous recherchez n'existe pas.</p>
         <% end %>
-        <div class="align_row">
-          <a class="btn" href="/accueil">Revenir à la page d'accueil</a><br>
-            <%# <a href="/gossips/<%=@gossips.id%>
-            <%#/edit">
-              <%# Mettre à jour %>
-            <%# </a> %>
-          <%if @gossip.user%>
-            <a class="btn" href="/gossips/<%=@gossip.id %>/users/<%=@gossip.user_id%>">Voir le profil de l'auteur</a>
-          <%end%>
+        <div class="space_between">
+          <div class="align_row">
+            <%if @gossip.user%>
+              <a class="btn" href="/gossips/<%=@gossip.id %>/users/<%=@gossip.user_id%>/city/<%=@gossip.user.city_id%>"><i class="bi bi-geo-alt"></i> <%=@gossip.user.city.name%></a>
+              <a class="btn" href="/gossips/<%=@gossip.id %>/users/<%=@gossip.user_id%>">L'auteur</a><br>
+            <%end%>
+          </div>
+          <div class="align_row">
+            <a class="secondary_button" href="/gossips/<%=@gossip.id %>/edit">Modifier</a> <%= button_to "Supprimer", @gossip, method: :delete, class:"secondary_button"%>
+          </div>
         </div>
-      <div>
+        <div class="comment">
+          <div>
+            <h2>Commentaires</h2>
+            <%@gossip.comments.each do |comment|%>
+          
+            <h3><%= comment.user ? comment.user.first_name : "Anonyme"%></h3>
+            <p class=comment_p><%= comment.description%></p>
+            <a class="secondary_button" href="/comments/<%=comment.id %>/edit">Modifier</a>
+          </div>
+          <%end%>
+          <div>
+            <%= form_tag url_for(controller:'comments', action: 'create'), method: "post", class:"form-row" do %>
+              <%= hidden_field_tag :gossip_id, @gossip.id %>
+              <%= text_field_tag :description, nil, class:"form-control comment_form" %>
+              <%= submit_tag "Ajouter un commentaire", class:'btn' %>
+            <%end%>
+        </div>
+        <div class=accueil>
+        </div>
+      </div>
     </section>
   </body>
 </html>

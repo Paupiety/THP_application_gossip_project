@@ -9,8 +9,19 @@ Rails.application.routes.draw do
 
 
   resources :gossips do
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resources :city, only: [:show]
+    end
   end
+
+  resources :users, only: [:show] do
+    resources :city, only: [:show]
+  end
+
+  resources :comments
+
+
+
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

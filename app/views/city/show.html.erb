@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Gossips par ville</title>
+</head>
+<body>
+  <%= render 'shared/header' %>
+  <main>
+    
+    <section class=section_center>
+      <a href="/accueil"><i class="bi bi-arrow-left-circle-fill color"></i></a>
+      <div class="align_center">
+        <h1> Gossips de la ville de <br><%= @city.name %></h1>
+      </div>
+      <div class=cards>
+        <% @city.users.each do |user| %>
+          <%user.gossips.each do |gossip|%>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.first_name%></h5>
+              <p class="card-text"><%= gossip.title %></p>
+              <a href="/gossips/<%=gossip.id%>" class="btn btn-primary">Voir le potin</a>
+            </div>
+          </div>
+            <%end%>
+        <% end %>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -25,6 +25,7 @@
               <h5 class="card-title"><%= gossip.user ? gossip.user.first_name : "Anonyme"%></h5>
               <p class="card-text"><%= gossip.title %></p>
               <a href="/gossips/<%=gossip.id%>" class="btn btn-primary">Voir le potin</a>
+              <p class=blue><i class="bi bi-chat-dots"></i> <%=gossip.comments.count%></p>
             </div>
           </div>
         <% end %>

@@ -19,7 +19,8 @@
         <%= form_tag url_for(controller:'gossips', action: 'create'), method: "post", class:"form-row" do %>
           <%= text_field_tag :title, nil, placeholder:'Titre de ton gossip ?', class:"form-control" %><br>
           <%= text_field_tag :description, nil, placeholder: 'Raconte-nous !', class:"form-control" %><br>
-          <%= submit_tag "Créer un gossip", class:'btn' %>
+          <%= select_tag :tag_id, options_for_select(@tags.collect{ |tag| [tag.name, tag.id] }), class:"form-control"%><br>
+          <%= submit_tag "Créer", class:'btn' %>
         <%end%>
       </div>
     </section>
