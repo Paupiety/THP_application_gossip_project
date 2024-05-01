@@ -33,7 +33,7 @@ header {
 }
 
 section {
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
@@ -195,6 +195,7 @@ p {
   height: fit-content;
   margin: 0px;
   background-color: white;
+  align-self: center;
 }
 
 .secondary_button:hover {
@@ -214,8 +215,17 @@ p {
     flex-direction: column;
     gap: 2rem;
     margin-top: 2rem;
+    align-items: center;
 
 }
+
+.comment_details{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 0.8rem;
+}
+
 
 .comment_form{
     width: 300px;
@@ -264,6 +274,7 @@ i:hover{
 }
 
 .tag{
+    margin-bottom: 10px;
     font-weight: 700;
     color: #0001f5;
 }

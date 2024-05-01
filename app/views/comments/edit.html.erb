@@ -18,11 +18,11 @@
         <h1 class=margin_title> Modifie ton commentaire </h1>
         <%= form_tag url_for(controller:'comments', action: 'update'), method: "patch", class:"form-row" do %>
           <%= text_field_tag :description, nil, value: @comment.description, class:"form-control" %><br>
-          <div class="align_row">
-            <%= submit_tag "Modifier", class:'btn' %>
-            <%end%>
+            <div class="align_row">
+              <%= submit_tag "Modifier", class:'btn' %>
+          <%end%>
             <%= button_to "Supprimer", @comment, method: :delete, class:"btn"%>
-          </div>
+            </div>
       </div>
     </section>
   </main>

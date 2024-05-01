@@ -48,20 +48,19 @@
           <div>
             <h2>Commentaires</h2>
             <%@gossip.comments.each do |comment|%>
-          
-            <h3><%= comment.user ? comment.user.first_name : "Anonyme"%></h3>
-            <p class=comment_p><%= comment.description%></p>
-            <a class="secondary_button" href="/comments/<%=comment.id %>/edit">Modifier</a>
+              <div class="comment_details">
+                <h3><%= comment.user ? comment.user.first_name : "Anonyme"%></h3>
+                <p class=comment_p><%= comment.description%></p>
+                <a class="secondary_button" href="/comments/<%=comment.id %>/edit">Modifier</a>
+              </div>
+            <%end%>
           </div>
-          <%end%>
           <div>
             <%= form_tag url_for(controller:'comments', action: 'create'), method: "post", class:"form-row" do %>
               <%= hidden_field_tag :gossip_id, @gossip.id %>
               <%= text_field_tag :description, nil, class:"form-control comment_form" %>
               <%= submit_tag "Ajouter un commentaire", class:'btn' %>
             <%end%>
-        </div>
-        <div class=accueil>
         </div>
       </div>
     </section>

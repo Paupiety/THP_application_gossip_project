@@ -7,18 +7,18 @@
 <body>
   <%= render 'shared/header' %>
   <main>
-<% if flash[:error] %>
-      <div class="alert alert-danger" role="alert">
-      <%= flash[:error]%>
-      </div>
-    <%end%>
+      <% if flash[:error] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:error]%>
+        </div>
+      <%end%>
     <section class=section_center>
       <div>
         <h1 class=margin_title> Modifie ton gossip </h1>
         <%= form_tag url_for(controller:'gossips', action: 'update'), method: "patch", class:"form-row" do %>
           <%= text_field_tag :title, nil, value: @gossip.title, class:"form-control" %><br>
           <%= text_field_tag :description, nil, value: @gossip.description, class:"form-control" %><br>
-          <%= submit_tag "Créer un gossip", class:'btn' %>
+          <%= submit_tag "Modifier", class:'btn' %>
         <%end%>
       </div>
     </section>
