@@ -1,33 +1,40 @@
 <header>
-<nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="/">The Gossip project</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg space_between_inline">
+    <a class="navbar-brand" href="/">The Gossip project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="navbar-link" href="/accueil">Accueil</a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-link" href="/team">La team</a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-link" href="/contact">Contactez-nous</a>
-      </li>
-      <%if session[:user_id] %>
+  <div class="collapse navbar-collapse space_between_inline" id="navbarSupportedContent">
+    <div>
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <%= button_to "Se deconnecter", session_path(session.id) , method: :delete, class:"secondary_button"%>
-          <a class="btn" href="/profil">Ton profil</a>
+          <a class="navbar-link" href="/accueil">Accueil</a>
         </li>
-      <%else%>
         <li class="nav-item">
-          <a class="btn" href="/sessions/new">Se connecter</a>
-          <a class="btn" href="/users/new">S'inscrire</a>
+          <a class="navbar-link" href="/team">La team</a>
         </li>
-      <%end%>
-    </ul>
+        <li class="nav-item">
+          <a class="navbar-link" href="/contact">Contactez-nous</a>
+        </li>
+      </ul>
+    </div>
+    <div class="align_row">
+        <%if session[:user_id] %>
+            <div class="align_row">
+              <div>
+                <a class="btn_profil" href="/profil">Ton profil</a>
+              </div>
+              <div>
+                <%= button_to "Se deconnecter", session_path(session.id) , method: :delete, class:"secondary_button"%>
+              </div>
+              
+            </div>
+        <%else%>
+            <a class="btn" href="/sessions/new">Se connecter</a>
+            <a class="btn" href="/users/new">S'inscrire</a>
+        <%end%>
+      </div>
   </div>
 </nav>
 </header>

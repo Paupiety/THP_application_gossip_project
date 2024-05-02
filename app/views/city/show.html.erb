@@ -16,14 +16,40 @@
       <div class=cards>
         <% @city.users.each do |user| %>
           <%user.gossips.each do |gossip|%>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><%= user.first_name%></h5>
-              <p class="card-text"><%= gossip.title %></p>
-              <a href="/gossips/<%=gossip.id%>" class="btn btn-primary">Voir le potin</a>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= user.first_name%></h5>
+                <p class="card-text"><%= gossip.title %></p>
+                <a href="/gossips/<%=gossip.id%>" class="btn btn-primary">Voir le potin</a>
+                <div class="space_between_inline">
+                <div class="blue align_row">
+                  <i class="bi bi-chat-dots like"></i> <div class=like><%=gossip.comments.count%></div>
+                </div>
+              
+                <div class=align_row>
+                  <%= form_tag url_for(controller:'likes', action: 'create'), method: "post", class: "no_decoration" do %>
+                    <%= hidden_field_tag :gossip_id, gossip.id %>
+                    <%unless (@like = Like.find_by(user_id: current_user.id , gossip_id: gossip.id))%>
+                      <%= button_tag(type: 'submit', class: 'no_decoration') do %>
+                          <i class="bi bi-hand-thumbs-up-fill like"></i>
+                      <% end %>
+                    <%end%>
+                  <%end%>
+                  <%if (@like = Like.find_by(user_id: current_user.id , gossip_id: gossip.id))%>
+                    <%= form_tag like_path(@like.id), method: :delete do %>
+                      <%= button_tag "Supprimer", class: 'no_decoration' do%>
+                        <i class="bi bi-hand-thumbs-up like"></i>
+                      <%end%>
+                    <% end %>
+                  <%end%>
+                  <div class=like> <%=gossip.likes.count%> </div>
+                </div>
+              </div>
+              </div>
+              
             </div>
-          </div>
-            <%end%>
+            
+          <%end%>
         <% end %>
       </div>
     </section>

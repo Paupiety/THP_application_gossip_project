@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:destroy, :new, :create]
 
+  resources :likes, only: [:create, :destroy]
+
 
 
 

@@ -88,6 +88,12 @@ section {
   color: white;
 }
 
+.btn_profil:hover {
+  background-color: #f0315f;
+  color: white;
+}
+
+
 .btn {
   text-decoration: none;
   border: none;
@@ -96,6 +102,21 @@ section {
   padding-right: 15px;
   padding-top: 6px;
   padding-bottom: 6px;
+  background-color: #0001f5;
+  color: white;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.btn_profil{
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   background-color: #0001f5;
   color: white;
   text-transform: uppercase;
@@ -158,6 +179,7 @@ h3 {
   display: flex;
   gap: 5px;
   align-items: center;
+  justify-content: center;
 }
 
 p {
@@ -210,10 +232,15 @@ p {
   gap: 8px;
 }
 
+.space_between_inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .comment{
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     margin-top: 2rem;
     align-items: center;
 
@@ -277,4 +304,19 @@ i:hover{
     margin-bottom: 10px;
     font-weight: 700;
     color: #0001f5;
+}
+
+.no_decoration{
+  background: none;
+  border: none;
+}
+
+.like{
+  color:#0001f5;
+  font-size: 20px;
+
+}
+
+.align_right{
+  align-self:flex-end;
 }

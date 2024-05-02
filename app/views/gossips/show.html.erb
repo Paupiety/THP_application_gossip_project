@@ -40,6 +40,30 @@
               <a class="btn" href="/gossips/<%=@gossip.id %>/users/<%=@gossip.user_id%>">L'auteur</a><br>
             <%end%>
           </div>
+          <div class="space_between_inline">
+                <div class="blue align_row">
+                  <i class="bi bi-chat-dots like"></i> <div class=like><%=@gossip.comments.count%></div>
+                </div>
+              
+                <div class=align_row>
+                  <%= form_tag url_for(controller:'likes', action: 'create'), method: "post", class: "no_decoration" do %>
+                    <%= hidden_field_tag :gossip_id, @gossip.id %>
+                    <%unless (@like = Like.find_by(user_id: current_user.id , gossip_id: @gossip.id))%>
+                      <%= button_tag(type: 'submit', class: 'no_decoration') do %>
+                          <i class="bi bi-hand-thumbs-up-fill like"></i>
+                      <% end %>
+                    <%end%>
+                  <%end%>
+                  <%if (@like = Like.find_by(user_id: current_user.id , gossip_id: @gossip.id))%>
+                    <%= form_tag like_path(@like.id), method: :delete do %>
+                      <%= button_tag "Supprimer", class: 'no_decoration' do%>
+                        <i class="bi bi-hand-thumbs-up like"></i>
+                      <%end%>
+                    <% end %>
+                  <%end%>
+                  <div class=like> <%=@gossip.likes.count%> </div>
+                </div>
+              </div>
           <%if @gossip.user_id == session[:user_id]%>
             <div class="align_row">
               <a class="secondary_button" href="/gossips/<%=@gossip.id %>/edit">Modifier</a> <%= button_to "Supprimer", @gossip, method: :delete, class:"secondary_button"%>
