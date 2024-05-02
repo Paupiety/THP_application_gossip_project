@@ -16,6 +16,15 @@
       <li class="nav-item">
         <a class="navbar-link" href="/contact">Contactez-nous</a>
       </li>
+      <%if session[:user_id] %>
+        <li class="nav-item">
+          <%= button_to "Se deconnecter", session_path(session.id) , method: :delete, class:"secondary_button"%>
+        </li>
+      <%else%>
+        <li class="nav-item">
+          <a class="btn" href="/sessions/new">Se connecter</a>
+        </li>
+      <%end%>
     </ul>
   </div>
 </nav>

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  resources :sessions, only: [:destroy, :new, :create]
+
 
 
 

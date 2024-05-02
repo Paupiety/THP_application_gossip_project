@@ -13,6 +13,7 @@ class GossipsController < ApplicationController
 
     def create()
         @gossip = Gossip.new(title: params[:title], description: params[:description])
+        @gossip.user = User.find_by(id: session[:user_id])
         if @gossip.save
             redirect_to "/accueil"
             flash[:success] = "Votre gossip a bien été créé"

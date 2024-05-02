@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>New gossip</title>
+</head>
+<body>
+  <%= render 'shared/header' %>
+  <main>
+    <% if flash[:error]%>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:error]%>
+      </div>
+    <% end %>
+
+    <section class=section_center>
+      <div>
+        <h1 class=margin_title> Connecte-toi </h1>
+        <%= form_tag url_for(controller:'sessions', action: 'create'), method: "post", class:"form-row" do %>
+          <%= text_field_tag :email, nil, placeholder:'Ton email', class:"form-control" %><br>
+          <%= text_field_tag :password_digest, nil, placeholder: 'Ton mot de passe', class:"form-control" %><br>
+          <%= submit_tag "Se connecter", class:'btn' %>
+        <%end%>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
