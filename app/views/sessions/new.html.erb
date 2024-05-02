@@ -11,6 +11,10 @@
       <div class="alert alert-danger" role="alert">
         <%= flash[:error]%>
       </div>
+    <%elsif flash[:success]%>
+      <div class="alert alert-success" role="alert">
+          <%= flash[:success]%>
+      </div>
     <% end %>
 
     <section class=section_center>
