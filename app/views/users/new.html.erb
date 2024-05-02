@@ -5,20 +5,38 @@
   <title>S'inscrire</title>
 </head>
 <body>
+  <%= render 'shared/header' %>
   <main>
+    <% if flash[:error] %>
+      <div class="alert alert-danger" role="alert">
+      <%= flash[:error]%>
+      </div>
+    <%end%>
     <section class=section_center>
       <div>
-        <h1> Inscris-toi  </h1>
+        <h1 class="titre_inscris"> Inscris-toi  </h1>
         <%= form_tag url_for(controller:'users', action: 'create'), method: "post", class:"form-row" do %>
-          <%= text_field_tag :first_name, nil, placeholder: "Prénom ?", class:"form-control" %><br>
-          <%= text_field_tag :last_name, nil,placeholder: "Nom ?", class:"form-control" %><br>
-          <%= text_field_tag :email, nil, placeholder: "Email", class:"form-control" %><br>
-          <%= text_field_tag :age, nil, placeholder: "Ton age", class:"form-control" %><br>
-          <%= text_field_tag :description, nil,  placeholder: "Présente-toi", class:"form-control" %><br>
-          <%= select_tag :city_id, options_for_select(@cities.collect{ |city| [city.name, city.id] }), class:"form-control"%><br>
-          <%= text_field_tag :password_digest, nil, placeholder: "Mot de passe", class:"form-control" %><br>
-          <%= text_field_tag :password_confirmation, nil, placeholder: "Confirme ton mot de passe", class:"form-control" %><br>
-          <%= submit_tag "S'inscrire", class:'btn'%>
+        <div class="form_inscription">
+            <div class="align_row">
+              <%= text_field_tag :first_name, nil, placeholder: "Prénom", class:"form-control" %>
+              <%= text_field_tag :last_name, nil,placeholder: "Nom", class:"form-control" %>
+            </div>
+            <div class="align_row">
+              <%= select_tag :city_id, options_for_select(@cities.collect{ |city| [city.name, city.id] }), class:"form-control"%>
+              <%= text_field_tag :age, nil, placeholder: "Ton age", class:"form-control" %>
+            </div>
+            <div class="align_row">
+              <%= text_field_tag :description, nil,  placeholder: "Présente-toi", class:"form-control" %>
+            </div>
+            <div class="align_row">
+              <%= text_field_tag :email, nil, placeholder: "Email", class:"form-control" %>
+            </div>
+            <div class="align_row">
+              <%= text_field_tag :password, nil, placeholder: "Mot de passe", class:"form-control" %>
+              <%= text_field_tag :password_confirmation, nil, placeholder: "Confirme ton mot de passe", class:"form-control" %>
+            </div>
+            <%= submit_tag "S'inscrire", class:'btn btn_inscription'%>
+          </div>
         <%end%>
       </div>
     </section>
