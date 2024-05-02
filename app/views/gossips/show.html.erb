@@ -40,9 +40,11 @@
               <a class="btn" href="/gossips/<%=@gossip.id %>/users/<%=@gossip.user_id%>">L'auteur</a><br>
             <%end%>
           </div>
-          <div class="align_row">
-            <a class="secondary_button" href="/gossips/<%=@gossip.id %>/edit">Modifier</a> <%= button_to "Supprimer", @gossip, method: :delete, class:"secondary_button"%>
-          </div>
+          <%if @gossip.user_id == session[:user_id]%>
+            <div class="align_row">
+              <a class="secondary_button" href="/gossips/<%=@gossip.id %>/edit">Modifier</a> <%= button_to "Supprimer", @gossip, method: :delete, class:"secondary_button"%>
+            </div>
+          <%end%>
         </div>
         <div class="comment">
           <div>
@@ -51,7 +53,9 @@
               <div class="comment_details">
                 <h3><%= comment.user ? comment.user.first_name : "Anonyme"%></h3>
                 <p class=comment_p><%= comment.description%></p>
-                <a class="secondary_button" href="/comments/<%=comment.id %>/edit">Modifier</a>
+                <%if comment.user_id == session[:user_id]%>
+                  <a class="secondary_button" href="/comments/<%=comment.id %>/edit">Modifier</a>
+                <%end%>
               </div>
             <%end%>
           </div>

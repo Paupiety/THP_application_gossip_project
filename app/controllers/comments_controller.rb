@@ -1,10 +1,11 @@
 
 
 class CommentsController < ApplicationController
-
+    before_action :authenticate_user
+    
     def create()
         @gossip = Gossip.find(params[:gossip_id])
-        @comment = Comment.new(description: params[:description], gossip: @gossip)
+        @comment = Comment.new(description: params[:description], gossip_id: @gossip.id, user_id: session[:user_id])
         if @comment.save
             redirect_to "/gossips/:id"
         else

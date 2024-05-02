@@ -1,5 +1,6 @@
 
 class GossipsController < ApplicationController
+    before_action :authenticate_user
 
     def show()
         id = params[:id]
@@ -12,7 +13,7 @@ class GossipsController < ApplicationController
     end
 
     def create()
-        @gossip = Gossip.new(title: params[:title], description: params[:description])
+        @gossip = Gossip.new(title: params[:title], description: params[:description], user_id: session[:user_id])
         @gossip.user = User.find_by(id: session[:user_id])
         if @gossip.save
             redirect_to "/accueil"

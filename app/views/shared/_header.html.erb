@@ -19,6 +19,7 @@
       <%if session[:user_id] %>
         <li class="nav-item">
           <%= button_to "Se deconnecter", session_path(session.id) , method: :delete, class:"secondary_button"%>
+          <a class="btn" href="/profil">Ton profil</a>
         </li>
       <%else%>
         <li class="nav-item">
