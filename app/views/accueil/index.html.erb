@@ -14,7 +14,7 @@
     <%end%>
     <section class=section_center>
       <div class="align_center">
-        <h1> Bienvenue <%= @firstname %></h1>
+        <h1> Bienvenue <%= current_user ? current_user.first_name : @firstname%></h1>
         <p>Le site est tout nouveau ! Sois l'un des premiers à partager un gossip ! </p>
         <a href="/gossips/new" class="btn btn-primary"> Créer un gossip</a>
       </div>

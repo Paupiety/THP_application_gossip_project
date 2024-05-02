@@ -6,10 +6,9 @@ class SessionsController < ApplicationController
 
     def create()
         @user = User.find_by(email: params[:email])
-        puts @user.email
         if @user && @user.authenticate(params[:password_digest])
             puts "ca fonctionne"
-            puts session[:user_id] = @user.id
+            log_in(@user)
             redirect_to "/accueil"
 
         else
