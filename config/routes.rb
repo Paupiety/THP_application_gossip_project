@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  root 'welcome#index', via: [:get, :post]
+  root 'accueil#index', via: [:get, :post]
   get "/profil", to: "users#profil"
 
   resources :team, only: [:index]
