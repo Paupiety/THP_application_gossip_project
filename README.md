@@ -5,11 +5,11 @@
 The Gossip Project est une application qui permet de raconter les gossips de THP.
 
 ### Features
-• S'inscrire à la plateforme
-• Se connecter
-• Créer des gossips (et les gérer)
-• Commenter les gossips (et gérer ses commentaires)
-• Aimer les gossips
+- S'inscrire à la plateforme
+- Se connecter
+- Créer des gossips (et les gérer)
+- Commenter les gossips (et gérer ses commentaires)
+- Aimer les gossips
 
 ## Get started
 
